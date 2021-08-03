@@ -1,0 +1,37 @@
+.MainCon {
+  background-color: rgb(23, 23, 71);
+  height: 100vh;
+}
+.AddToDo {
+  padding: 20px;
+  height: 200px;
+  background-color: #eee;
+  display: block;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: 5px solid white;
+}
+.ToDoList {
+  padding: 20px;
+  background-color: #eee;
+  display: block;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: 5px solid white;
+}
+.TodoCon {
+  background-color: aliceblue;
+  margin-top: 10px;
+  border: 1px solid rgb(98, 96, 96);
+  border-radius: 10px;
+  padding: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.Active {
+  color: rgb(255, 166, 0);
+}
+.NotActive {
+  text-decoration: line-through;
+}
