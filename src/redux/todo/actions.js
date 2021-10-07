@@ -10,7 +10,7 @@ export const insertTodo = (row) => ({
   },
 });
 export const toggleTodo = (id) => ({
-  type: TodoType.TOGGOl_TODO,
+  type: TodoType.TOGGOL_TO_DO,
   payload: {
     id,
   },
