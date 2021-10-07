@@ -1,58 +1,40 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
+import { connect } from "react-redux";
 import classes from "../ui/App.module.css";
 
-export default function Todo(props) {
-  let active;
-  if (props.todoTask.isActive) {
-    active = (
-      <>
-        <Col className={classes.Active}>{props.todoTask.job}</Col>
-        <Col xs lg="1" className={classes.Active}>
-          <i
-            className="fas fa-power-off"
-            onClick={() => {
-              props.activity(props.todoTask.id);
-            }}
-          ></i>
-        </Col>
-      </>
-    );
-  } else {
-    active = (
-      <>
-        <Col className={classes.NotActive}>{props.todoTask.job}</Col>
-        <Col xs lg="1">
-          <i
-            className="fas fa-power-off"
-            onClick={() => {
-              props.activity(props.todoTask.id);
-            }}
-          ></i>
-        </Col>
-      </>
-    );
-  }
+import { toggleTodo } from "../redux/todo/actions";
 
+function Todo(props) {
   return (
-    <Container id={props.todoTask.id} className={classes.TodoCon}>
-      <Row>
-        {active}
-
+    <Container className={classes.TodoCon}>
+      <Row onClick={() => props.toggleTodo(props.row.id)}>
+        {props.row && props.row.isComplete ? (
+          <span style={{ color: "green" }}>Done</span>
+        ) : (
+          <span style={{ color: "red" }}>To Do </span>
+        )}
+        -{props.row.content}
         <Col xs lg="1">
-          <i
+          {/* <i
             className="far fa-edit"
             onClick={() => props.toEdit(props.todoTask.id)}
-          ></i>
+          ></i> */}
         </Col>
         <Col xs lg="1">
-          <i
+          {/* <i
             className="far fa-trash-alt"
             onClick={() => props.toRemove(props.todoTask.id)}
-          ></i>
+          ></i> */}
         </Col>
       </Row>
     </Container>
   );
 }
+
+const mapState = (dispatch) => ({
+  toggleTodo: (id) => dispatch(toggleTodo(id)),
+});
+
+export default connect(null, mapState)(Todo);
